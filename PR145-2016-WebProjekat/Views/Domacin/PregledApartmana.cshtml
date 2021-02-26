@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "PregledApartmana";
+}
+
+<head>
+    <link href="@Url.Content("~/Content/Domacin.css")" rel="stylesheet" type="text/css" />
+</head>
+
+
+<body>
+    <h2>PregledApartmana</h2>
+
+    <table>
+        @{ foreach (var item in ViewBag.Ap)
+            {
+                if (item.IdKorisnika == ViewBag.Sad.Id) { 
+                        <tr>
+                            <td>Tip:</td>
+                            <td>@item.Tip</td>
+                        </tr>
+                        <tr>
+                            <td>Broj Soba:</td>
+                            <td>@item.BrojSoba</td>
+                        </tr>
+                        <tr>
+                            <td>Broj Gostiju:</td>
+                            <td>@item.BrojGostiju</td>
+                        </tr>
+                        <tr>
+                            <td>GeografskaSirina:</td>
+                            <td>@item.Lokacija.GeografskaSirina</td>
+                        </tr>
+                        <tr>
+                            <td>GeografskaDuzina:</td>
+                            <td>@item.Lokacija.GeografskaDuzina</td>
+                        </tr>
+                        <tr>
+                            <td>Ulica:</td>
+                            <td>@item.Lokacija.Adresa.Ulica</td>
+                        </tr>
+                        <tr>
+                            <td>Broj:</td>
+                            <td>@item.Lokacija.Adresa.Broj</td>
+                        </tr>
+                        <tr>
+                            <td>Naseljeno Mesto:</td>
+                            <td>@item.Lokacija.Adresa.NaseljenoMesto</td>
+                        </tr>
+                        <tr>
+                            <td>Postanski Broj:</td>
+                            <td>@item.Lokacija.Adresa.PostanskiBroj</td>
+                        </tr>
+                        <tr>
+                            <td>Datumi Dostupnost:</td>
+
+                            @{foreach (var itemf in item.DatumiDostupnost)
+                                {
+                                    <td>@itemf</td>
+                                }
+                            }
+
+
+                        </tr>
+                        <tr>
+                            <td>Cena Po Noci:</td>
+                            <td>@item.CenaPoNoci</td>
+                        </tr>
+                        <tr>
+                            <td>Vreme Prijave:</td>
+                            <td>@item.VremePrijave</td>
+                        </tr>
+                        <tr>
+                            <td>Status Apartmana:</td>
+                            <td>@item.StatusApartmana</td>
+                        </tr>
+                        <tr>
+                            <td>Amenities:</td>
+
+                            @{foreach (var itemf in item.Amenities)
+                                {
+                                    <td>@itemf.Naziv</td>
+                                }
+                            }
+
+                        </tr>
+                    }
+                }
+            
+        }
+
+
+
+
+    </table>
+</body>

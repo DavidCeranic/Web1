@@ -1,0 +1,321 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+}
+
+<head>
+    <link href="@Url.Content("~/Content/SingInOrRegister.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/DropdownMenu.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <h2><a href="Start" id="link">Welcome to TripCity</a></h2>
+
+    <div class="a">
+        <form action="~/SingInOrRegister/Register" method="post">
+            <input type="submit" value="Register" class="button" id="button1" />
+        </form>
+
+        <form action="~/SingInOrRegister/SingIn" method="post">
+            <input type="submit" value="Sing In" class="button" id="button2" />
+        </form>
+    </div>
+
+
+    <div class="input">
+        @{ if (ViewBag.dodaj == "register")
+            {
+                <form action="~/SingInOrRegister/Register2" method="post">
+                    <table>
+                        <tr>
+                            <td>Username:</td>
+                            <td><input type="text" name="KorisnickoIme" required></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td><input type="password" name="Lozinka" required></td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td><input type="text" name="Ime" required></td>
+                        </tr>
+                        <tr>
+                            <td>Surname:</td>
+                            <td><input type="text" name="Prezime" required></td>
+                        </tr>
+                        <tr>
+                            <td>Gener:</td>
+                            <td>
+                                <select name="Pol">
+                                    <option value="Zensko">Woman</option>
+                                    <option value="Musko">Man</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr hidden="hidden"><td><input type="text" name="Uloga" value="Gost" /></td></tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Register"></td>
+                        </tr>
+                    </table>
+                </form>
+            }
+        }
+    </div>
+
+    <div class="input">
+        @{ if (ViewBag.dodaj == "singin")
+            {
+                <form action="SingIn2" method="post">
+                    <table>
+                        <tr>
+                            <td>Username:</td>
+                            <td><input type="text" name="KorisnickoIme" required></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td><input type="password" name="Lozinka" required></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Sing In" ></td>
+                        </tr>
+                    </table>
+                </form>
+            }
+        }
+    </div>
+
+
+
+    <div class="menu" style="margin-top:120px;margin-left:440px;">
+        <div class="dropdown">
+            <button class="dropbtn">Basic</button>
+            <div class="dropdown-content">
+                @{
+                    foreach (var item in ViewBag.basic)
+                    {
+                        <a href="~/SingInOrRegister/Filter?naziv=@item.Naziv">@item.Naziv</a>
+                    }
+
+                }
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Family</button>
+            <div class="dropdown-content">
+                @{
+                    foreach (var item in ViewBag.family)
+                    {
+                        <a href="~/SingInOrRegister/Filter?naziv=@item.Naziv">@item.Naziv</a>
+                    }
+
+                }
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Dining</button>
+            <div class="dropdown-content">
+                @{
+                    foreach (var item in ViewBag.dining)
+                    {
+                        <a href="~/SingInOrRegister/Filter?naziv=@item.Naziv">@item.Naziv</a>
+                    }
+
+                }
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Type</button>
+            <div class="dropdown-content">
+                <a href="~/SingInOrRegister/Filter?naziv2=CeoApartman">Apartman</a>
+                <a href="~/SingInOrRegister/Filter?naziv2=Soba">Room</a>
+            </div>
+        </div>
+
+        <!--<div class="dropdown">
+            <button class="dropbtn">Status</button>
+            <div class="dropdown-content">
+                <a href="~/SingInOrRegister/Filter?naziv3=Aktivno">Active</a>
+                <a href="~/SingInOrRegister/Filter?naziv3=Neaktivano">Non Active</a>
+            </div>
+        </div>-->
+
+    </div>
+
+
+
+
+
+    <div>
+        <table border="1" style="margin-left:450px;margin-top:350px;">
+            <tr>
+                <td>Aktivni Apartmani</td>
+            </tr>
+            @{ foreach (var item in ViewBag.Aktivni)
+                {
+                    if (item.Obirsan == false)
+                    {
+                    <tr>
+                        <td>Tip:</td>
+                        <td>@item.Tip</td>
+                    </tr>
+                    <tr>
+                        <td>Broj Soba:</td>
+                        <td>@item.BrojSoba</td>
+                    </tr>
+                    <tr>
+                        <td>Broj Gostiju:</td>
+                        <td>@item.BrojGostiju</td>
+                    </tr>
+                    <tr>
+                        <td>GeografskaSirina:</td>
+                        <td>@item.Lokacija.GeografskaSirina</td>
+                    </tr>
+                    <tr>
+                        <td>GeografskaDuzina:</td>
+                        <td>@item.Lokacija.GeografskaDuzina</td>
+                    </tr>
+                    <tr>
+                        <td>Ulica:</td>
+                        <td>@item.Lokacija.Adresa.Ulica</td>
+                    </tr>
+                    <tr>
+                        <td>Broj:</td>
+                        <td>@item.Lokacija.Adresa.Broj</td>
+                    </tr>
+                    <tr>
+                        <td>Naseljeno Mesto:</td>
+                        <td>@item.Lokacija.Adresa.NaseljenoMesto</td>
+                    </tr>
+                    <tr>
+                        <td>Postanski Broj:</td>
+                        <td>@item.Lokacija.Adresa.PostanskiBroj</td>
+                    </tr>
+                    <tr>
+                        <td>Datumi Dostupnost:</td>
+
+                        @{foreach (var itemf in item.DatumiDostupnost)
+                            {
+                                <td>@itemf</td>
+                            }
+                        }
+
+
+                    </tr>
+                    <tr>
+                        <td>Cena Po Noci:</td>
+                        <td>@item.CenaPoNoci</td>
+                    </tr>
+                    <tr>
+                        <td>Vreme Prijave:</td>
+                        <td>@item.VremePrijave</td>
+                    </tr>
+                    <tr>
+                        <td>Status Apartmana:</td>
+                        <td>@item.StatusApartmana</td>
+                    </tr>
+                    <tr>
+                        <td>Amenities:</td>
+
+                        @{foreach (var itemf in item.Amenities)
+                            {
+                                <td>@itemf.Naziv</td>
+                            }
+                        }
+
+                    </tr>
+                            if (item.Slike != null)
+                            {
+                                foreach (var item1 in item.Slike)
+                                {
+                            <tr>
+                                <td>Slika:</td>
+                                <td><img src="@item1" width="100" /></td>
+                            </tr>
+                                }
+
+                            }
+
+                            if (item.komentari != null)
+                            {
+                                foreach (var item2 in item.komentari)
+                                {
+                            <tr>
+                                <td>Komentar:</td>
+                                <td>@item2.Tekst</td>
+                            </tr>
+                            <tr>
+                                <td>Ocena:</td>
+                                <td>@item2.Ocena</td>
+                            </tr>
+                                }
+                            }
+
+                    <tr>
+                        <td bgcolor="cadetblue" style="line-height:40px;" colspan=2>&nbsp;</td>
+                    </tr>
+                                    }
+                                }}
+        </table>
+    </div>
+
+
+
+    <div class="pretraga" style="top:600px;margin-left:850px;">
+        <form action="~/SingInOrRegister/Pretraga" method="post">
+            <table>
+                <tr>
+                    <td>Search:</td>
+                </tr>
+                <tr>
+                    <td>Location:</td>
+                    <td><input type="text" name="Lokacija" style="width:198px"></td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="number" name="OdCena" placeholder="Start price" style="width:100px"> <input type="number" name="DoCena" placeholder="End price" style="width:95px"></td>
+                </tr>
+                <tr>
+                    <td>Num of Room:</td>
+                    <td><input type="number" name="OdSoba" placeholder="Start room" style="width:100px"> <input type="number" name="DoSoba" placeholder="End room" style="width:95px"></td>
+                </tr>
+                <tr>
+                    <td>Num of People:</td>
+                    <td><input type="number" name="BrojOsoba" style="width:198px"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Search" class="dugme"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+
+
+    <div style="position:absolute;margin-left:950px;top:850px">
+        <form action="~/SingInOrRegister/Sortiranje" method="post">
+            <table>
+                <tr>
+                    <td>Sort:</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="sort" value="dole">Droping value</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="sort" value="gore">Rasing value</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Sort" class="dugme"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</body>
+
+

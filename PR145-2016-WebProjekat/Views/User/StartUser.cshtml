@@ -1,0 +1,690 @@
+﻿
+@{
+    ViewBag.Title = "StartUser";
+}
+
+
+
+<head>
+    <link href="@Url.Content("~/Content/User.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/DropdownMenu.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <a href="~/User/Nazadd">Start Page</a>
+
+
+    <div class="menu" style="margin-left:340px;">
+        <div class="dropdown">
+            <button class="dropbtn">Basic</button>
+            <div class="dropdown-content">
+                @{
+                    foreach (var item in ViewBag.basic)
+                    {
+                        <a href="~/User/Filter?naziv=@item.Naziv">@item.Naziv</a>
+                    }
+
+                }
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Family</button>
+            <div class="dropdown-content">
+                @{
+                    foreach (var item in ViewBag.family)
+                    {
+                        <a href="~/User/Filter?naziv=@item.Naziv">@item.Naziv</a>
+                    }
+
+                }
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Dining</button>
+            <div class="dropdown-content">
+                @{
+                    foreach (var item in ViewBag.dining)
+                    {
+                        <a href="~/User/Filter?naziv=@item.Naziv">@item.Naziv</a>
+                    }
+
+                }
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Type</button>
+            <div class="dropdown-content">
+                <a href="~/User/Filter?naziv2=CeoApartman">Apartman</a>
+                <a href="~/User/Filter?naziv2=Soba">Room</a>
+            </div>
+        </div>
+
+        <!--<div class="dropdown">
+            <button class="dropbtn">Status</button>
+            <div class="dropdown-content">
+                <a href="~/User/Filter?naziv3=Aktivno">Active</a>
+                <a href="~/User/Filter?naziv3=Neaktivano">Non Active</a>
+            </div>
+        </div>-->
+
+    </div>
+
+
+
+
+
+    <div id="user">
+        <p>Information about User:</p>
+        @{
+            if (ViewBag.info2 != "sakrij")
+            {
+
+                <form action="~/User/ChangeInfo" method="post">
+                    <table>
+                        @{ foreach (var item in ViewBag.gosti)
+                            {
+                                if (item.KorisnickoIme == ViewBag.taj3)
+                                {
+
+                                    <tr>
+                                        <td>Username:</td>
+                                        <td>@item.KorisnickoIme</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Password:</td>
+                                        <td>@item.Lozinka</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name:</td>
+                                        <td>@item.Ime</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Surname</td>
+                                        <td>@item.Prezime</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gener:</td>
+                                        <td>@item.Pol</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Type:</td>
+                                        <td>@item.Uloga</td>
+                                    </tr>
+                                    <tr colspam="2">
+                                        <td>
+                                            <input type="submit" value="Change information">
+                                            <input type="hidden" value="@item.KorisnickoIme" name="id" />
+                                            <input type="hidden" value="@item.Id" name="Id_" />
+                                        </td>
+                                    </tr>
+
+                                }
+                            }
+                        }
+                    </table>
+                </form>
+
+            }
+            else
+            {
+                <form action="~/User/SaveChanges" method="post">
+                    <table>
+                        <tr>
+                            <td>Username:</td>
+                            <td><input type="text" name="KorisnickoIme" value="@ViewBag.trenutni.KorisnickoIme" required></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td><input type="password" name="Lozinka" value="@ViewBag.trenutni.Lozinka" required></td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td><input type="text" name="Ime" value="@ViewBag.trenutni.Ime" required></td>
+                        </tr>
+                        <tr>
+                            <td>Surname</td>
+                            <td><input type="text" name="Prezime" value="@ViewBag.trenutni.Prezime" required></td>
+                        </tr>
+                        <tr>
+                            <td>Gener:</td>
+                            <td>
+                                <select name="Pol">
+                                    <option value="Zensko">Woman</option>
+                                    <option value="Musko">Man</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr colspam="2">
+                            <td><input type="submit" value="Save Changes"></td>
+                        </tr>
+                    </table>
+                </form>
+            }
+        }
+    </div>
+
+
+
+    <div style="">
+        @{ if (ViewBag.sakrij10 == "svi")
+            {
+        <table border="1" style="margin-left:350px;position:absolute;margin-top:-100px;">
+            <tr>
+                <td>Aktivni Apartmani</td>
+            </tr>
+            @{ foreach (var item in ViewBag.Aktivni10)
+                {
+                    if (item.Obirsan == false)
+                    {
+                    <tr>
+                        <td>Tip:</td>
+                        <td>@item.Tip</td>
+                    </tr>
+                    <tr>
+                        <td>Broj Soba:</td>
+                        <td>@item.BrojSoba</td>
+                    </tr>
+                    <tr>
+                        <td>Broj Gostiju:</td>
+                        <td>@item.BrojGostiju</td>
+                    </tr>
+                    <tr>
+                        <td>GeografskaSirina:</td>
+                        <td>@item.Lokacija.GeografskaSirina</td>
+                    </tr>
+                    <tr>
+                        <td>GeografskaDuzina:</td>
+                        <td>@item.Lokacija.GeografskaDuzina</td>
+                    </tr>
+                    <tr>
+                        <td>Ulica:</td>
+                        <td>@item.Lokacija.Adresa.Ulica</td>
+                    </tr>
+                    <tr>
+                        <td>Broj:</td>
+                        <td>@item.Lokacija.Adresa.Broj</td>
+                    </tr>
+                    <tr>
+                        <td>Naseljeno Mesto:</td>
+                        <td>@item.Lokacija.Adresa.NaseljenoMesto</td>
+                    </tr>
+                    <tr>
+                        <td>Postanski Broj:</td>
+                        <td>@item.Lokacija.Adresa.PostanskiBroj</td>
+                    </tr>
+                    <tr>
+                        <td>Datumi Dostupnost:</td>
+
+                        @{foreach (var itemf in item.DatumiDostupnost)
+                            {
+                                <td>@itemf</td>
+                            }
+                        }
+
+
+                    </tr>
+                    <tr>
+                        <td>Cena Po Noci:</td>
+                        <td>@item.CenaPoNoci</td>
+                    </tr>
+                    <tr>
+                        <td>Vreme Prijave:</td>
+                        <td>@item.VremePrijave.ToString()</td>
+                    </tr>
+                    <tr>
+                        <td>Vreme Odjave:</td>
+                        <td>@item.VremeOdjave.ToString()</td>
+                    </tr>
+                    <tr>
+                        <td>Status Apartmana:</td>
+                        <td>@item.StatusApartmana</td>
+                    </tr>
+                    <tr>
+                        <td>Amenities:</td>
+
+                        @{foreach (var itemf in item.Amenities)
+                            {
+                                <td>@itemf.Naziv</td>
+                            }
+                        }
+
+                    </tr>
+                            if (item.Slike != null)
+                            {
+                                foreach (var item1 in item.Slike)
+                                {
+                            <tr>
+                                <td>Slika:</td>
+                                <td><img src="@item1" width="100" /></td>
+                            </tr>
+                                }
+
+                            }
+
+
+                            if (item.komentari != null)
+                            {
+                                foreach (var item2 in item.komentari)
+                                {
+                            <tr>
+                                <td>Komentar:</td>
+                                <td>@item2.Tekst</td>
+                            </tr>
+                            <tr>
+                                <td>Ocena:</td>
+                                <td>@item2.Ocena</td>
+                            </tr>
+                                }
+                            }
+
+                    <tr>
+                        <td bgcolor="cadetblue" style="line-height:40px;" colspan=2>&nbsp;</td>
+                    </tr>
+
+                                    }
+                                }}
+        </table>
+            }
+            else if (ViewBag.sakrij10 == "filtrirani")
+            {
+                <table border="1" style="margin-left:350px;position:absolute;margin-top:-70px;">
+                    <tr>
+                        <td>Filtrirani Apartmani</td>
+                    </tr>
+                    @{ foreach (var item in ViewBag.Aktivni10)
+                        {
+                            if (item.Obirsan == false)
+                            {
+                            <tr>
+                                <td>Tip:</td>
+                                <td>@item.Tip</td>
+                            </tr>
+                            <tr>
+                                <td>Broj Soba:</td>
+                                <td>@item.BrojSoba</td>
+                            </tr>
+                            <tr>
+                                <td>Broj Gostiju:</td>
+                                <td>@item.BrojGostiju</td>
+                            </tr>
+                            <tr>
+                                <td>GeografskaSirina:</td>
+                                <td>@item.Lokacija.GeografskaSirina</td>
+                            </tr>
+                            <tr>
+                                <td>GeografskaDuzina:</td>
+                                <td>@item.Lokacija.GeografskaDuzina</td>
+                            </tr>
+                            <tr>
+                                <td>Ulica:</td>
+                                <td>@item.Lokacija.Adresa.Ulica</td>
+                            </tr>
+                            <tr>
+                                <td>Broj:</td>
+                                <td>@item.Lokacija.Adresa.Broj</td>
+                            </tr>
+                            <tr>
+                                <td>Naseljeno Mesto:</td>
+                                <td>@item.Lokacija.Adresa.NaseljenoMesto</td>
+                            </tr>
+                            <tr>
+                                <td>Postanski Broj:</td>
+                                <td>@item.Lokacija.Adresa.PostanskiBroj</td>
+                            </tr>
+                            <tr>
+                                <td>Datumi Dostupnost:</td>
+
+                                @{foreach (var itemf in item.DatumiDostupnost)
+                                    {
+                                        <td>@itemf</td>
+                                    }
+                                }
+
+
+                            </tr>
+                            <tr>
+                                <td>Cena Po Noci:</td>
+                                <td>@item.CenaPoNoci</td>
+                            </tr>
+                            <tr>
+                                <td>Vreme Prijave:</td>
+                                <td>@item.VremePrijave</td>
+                            </tr>
+                            <tr>
+                                <td>Status Apartmana:</td>
+                                <td>@item.StatusApartmana</td>
+                            </tr>
+                            <tr>
+                                <td>Amenities:</td>
+
+                                @{foreach (var itemf in item.Amenities)
+                                    {
+                                        <td>@itemf.Naziv</td>
+                                    }
+                                }
+
+                            </tr>
+                                    if (item.Slike != null)
+                                    {
+                                        foreach (var item1 in item.Slike)
+                                        {
+                                    <tr>
+                                        <td>Slika:</td>
+                                        <td><img src="@item1" width="100" /></td>
+                                    </tr>
+                                        }
+
+                                    }
+
+
+                                    if (item.komentari != null)
+                                    {
+                                        foreach (var item2 in item.komentari)
+                                        {
+                                    <tr>
+                                        <td>Komentar:</td>
+                                        <td>@item2.Tekst</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ocena:</td>
+                                        <td>@item2.Ocena</td>
+                                    </tr>
+                                        }
+                                    }
+
+                            <tr>
+                                <td bgcolor="cadetblue" style="line-height:40px;" colspan=2>&nbsp;</td>
+                            </tr>
+
+                                            }
+                                        }}
+                </table>
+            }
+            else if (ViewBag.sakrij10 == "sortirani")
+            {
+                <table border="1" style="margin-left:350px;position:absolute;margin-top:-70px;">
+                    <tr>
+                        <td>Sortirani Apartmani</td>
+                    </tr>
+                    @{ foreach (var item in ViewBag.Aktivni10)
+                        {
+                            if (item.Obirsan == false)
+                            {
+                            <tr>
+                                <td>Tip:</td>
+                                <td>@item.Tip</td>
+                            </tr>
+                            <tr>
+                                <td>Broj Soba:</td>
+                                <td>@item.BrojSoba</td>
+                            </tr>
+                            <tr>
+                                <td>Broj Gostiju:</td>
+                                <td>@item.BrojGostiju</td>
+                            </tr>
+                            <tr>
+                                <td>GeografskaSirina:</td>
+                                <td>@item.Lokacija.GeografskaSirina</td>
+                            </tr>
+                            <tr>
+                                <td>GeografskaDuzina:</td>
+                                <td>@item.Lokacija.GeografskaDuzina</td>
+                            </tr>
+                            <tr>
+                                <td>Ulica:</td>
+                                <td>@item.Lokacija.Adresa.Ulica</td>
+                            </tr>
+                            <tr>
+                                <td>Broj:</td>
+                                <td>@item.Lokacija.Adresa.Broj</td>
+                            </tr>
+                            <tr>
+                                <td>Naseljeno Mesto:</td>
+                                <td>@item.Lokacija.Adresa.NaseljenoMesto</td>
+                            </tr>
+                            <tr>
+                                <td>Postanski Broj:</td>
+                                <td>@item.Lokacija.Adresa.PostanskiBroj</td>
+                            </tr>
+                            <tr>
+                                <td>Datumi Dostupnost:</td>
+
+                                @{foreach (var itemf in item.DatumiDostupnost)
+                                    {
+                                        <td>@itemf</td>
+                                    }
+                                }
+
+
+                            </tr>
+                            <tr>
+                                <td>Cena Po Noci:</td>
+                                <td>@item.CenaPoNoci</td>
+                            </tr>
+                            <tr>
+                                <td>Vreme Prijave:</td>
+                                <td>@item.VremePrijave</td>
+                            </tr>
+                            <tr>
+                                <td>Status Apartmana:</td>
+                                <td>@item.StatusApartmana</td>
+                            </tr>
+                            <tr>
+                                <td>Amenities:</td>
+
+                                @{foreach (var itemf in item.Amenities)
+                                    {
+                                        <td>@itemf.Naziv</td>
+                                    }
+                                }
+
+                            </tr>
+                                    if (item.Slike != null)
+                                    {
+                                        foreach (var item1 in item.Slike)
+                                        {
+                                    <tr>
+                                        <td>Slika:</td>
+                                        <td><img src="@item1" width="100" /></td>
+                                    </tr>
+                                        }
+
+                                    }
+
+
+                                    if (item.komentari != null)
+                                    {
+                                        foreach (var item2 in item.komentari)
+                                        {
+                                    <tr>
+                                        <td>Komentar:</td>
+                                        <td>@item2.Tekst</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ocena:</td>
+                                        <td>@item2.Ocena</td>
+                                    </tr>
+                                        }
+                                    }
+
+                            <tr>
+                                <td bgcolor="cadetblue" style="line-height:40px;" colspan=2>&nbsp;</td>
+                            </tr>
+                                            }
+
+                                        }}
+                </table>
+            }
+            else if (ViewBag.sakrij10 == "pretraga")
+            {
+                <table border="1" style="margin-left:350px;position:absolute;margin-top:-70px;">
+                    <tr>
+                        <td>Pretrazeni Apartmani</td>
+                    </tr>
+                    @{ foreach (var item in ViewBag.Aktivni10)
+                        {
+                            if (item.Obirsan == false)
+                            {
+                            <tr>
+                                <td>Tip:</td>
+                                <td>@item.Tip</td>
+                            </tr>
+                            <tr>
+                                <td>Broj Soba:</td>
+                                <td>@item.BrojSoba</td>
+                            </tr>
+                            <tr>
+                                <td>Broj Gostiju:</td>
+                                <td>@item.BrojGostiju</td>
+                            </tr>
+                            <tr>
+                                <td>GeografskaSirina:</td>
+                                <td>@item.Lokacija.GeografskaSirina</td>
+                            </tr>
+                            <tr>
+                                <td>GeografskaDuzina:</td>
+                                <td>@item.Lokacija.GeografskaDuzina</td>
+                            </tr>
+                            <tr>
+                                <td>Ulica:</td>
+                                <td>@item.Lokacija.Adresa.Ulica</td>
+                            </tr>
+                            <tr>
+                                <td>Broj:</td>
+                                <td>@item.Lokacija.Adresa.Broj</td>
+                            </tr>
+                            <tr>
+                                <td>Naseljeno Mesto:</td>
+                                <td>@item.Lokacija.Adresa.NaseljenoMesto</td>
+                            </tr>
+                            <tr>
+                                <td>Postanski Broj:</td>
+                                <td>@item.Lokacija.Adresa.PostanskiBroj</td>
+                            </tr>
+                            <tr>
+                                <td>Datumi Dostupnost:</td>
+
+                                @{foreach (var itemf in item.DatumiDostupnost)
+                                    {
+                                        <td>@itemf</td>
+                                    }
+                                }
+
+
+                            </tr>
+                            <tr>
+                                <td>Cena Po Noci:</td>
+                                <td>@item.CenaPoNoci</td>
+                            </tr>
+                            <tr>
+                                <td>Vreme Prijave:</td>
+                                <td>@item.VremePrijave</td>
+                            </tr>
+                            <tr>
+                                <td>Status Apartmana:</td>
+                                <td>@item.StatusApartmana</td>
+                            </tr>
+                            <tr>
+                                <td>Amenities:</td>
+
+                                @{foreach (var itemf in item.Amenities)
+                                    {
+                                        <td>@itemf.Naziv</td>
+                                    }
+                                }
+
+                            </tr>
+                                    if (item.Slike != null)
+                                    {
+                                        foreach (var item1 in item.Slike)
+                                        {
+                                    <tr>
+                                        <td>Slika:</td>
+                                        <td><img src="@item1" width="100" /></td>
+                                    </tr>
+                                        }
+
+                                    }
+
+
+                                    if (item.komentari != null)
+                                    {
+                                        foreach (var item2 in item.komentari)
+                                        {
+                                    <tr>
+                                        <td>Komentar:</td>
+                                        <td>@item2.Tekst</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ocena:</td>
+                                        <td>@item2.Ocena</td>
+                                    </tr>
+                                        }
+                                    }
+
+                            <tr>
+                                <td bgcolor="cadetblue" style="line-height:40px;" colspan=2>&nbsp;</td>
+                            </tr>
+
+                                            }
+                                        }}
+                </table>
+            }
+        }
+    </div>
+
+
+    <div class="pretraga" style="top:400px;margin-left:800px;margin-top:-170px;">
+        <form action="~/User/Pretraga" method="post">
+            <table>
+                <tr>
+                    <td>Search:</td>
+                </tr>
+                <tr>
+                    <td>Location:</td>
+                    <td><input type="text" name="Lokacija" style="width:198px"></td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="number" name="OdCena" placeholder="Start price" style="width:100px"> <input type="number" name="DoCena" placeholder="End price" style="width:95px"></td>
+                </tr>
+                <tr>
+                    <td>Num of room:</td>
+                    <td><input type="number" name="OdSoba" placeholder="Start room" style="width:100px"> <input type="number" name="DoSoba" placeholder="End room" style="width:95px"></td>
+                </tr>
+                <tr>
+                    <td>Num of people:</td>
+                    <td><input type="number" name="BrojOsoba" style="width:198px"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Search"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+
+
+    <div style="position:absolute;margin-left:800px;top:450px">
+        <form action="~/User/Sortiranje" method="post">
+            <table>
+                <tr>
+                    <td>Sort:</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="sort" value="dole">Droping value</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="sort" value="gore">Rasing value</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Sort"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>

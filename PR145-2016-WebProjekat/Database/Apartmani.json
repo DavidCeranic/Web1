@@ -1,0 +1,205 @@
+[
+  {
+    "Tip": 0,
+    "BrojSoba": 2,
+    "BrojGostiju": 2,
+    "Lokacija": {
+      "GeografskaSirina": 24.0,
+      "GeografskaDuzina": 57.0,
+      "Adresa": {
+        "Ulica": "Kisacka",
+        "Broj": 47,
+        "NaseljenoMesto": "Novi Sad",
+        "PostanskiBroj": "21000"
+      }
+    },
+    "DatumiIzdavanja": null,
+    "DatumiDostupnost": [
+      "2019-06-30T00:00:00"
+    ],
+    "Domacin": {
+      "ApartmaniZaIzdavanje": null,
+      "KorisnickoIme": "Domacin",
+      "Lozinka": "Domacin",
+      "Ime": "Domacin",
+      "Prezime": "Domacin",
+      "Pol": 0,
+      "Uloga": 1,
+      "Id": 0
+    },
+    "komentari": [
+      {
+        "Gost": null,
+        "Apartman": null,
+        "Tekst": "Odlican apartman posetio sam ga.",
+        "Ocena": 9.8
+      }
+    ],
+    "Slike": [
+      "/Slike/slika1.jpg"
+    ],
+    "CenaPoNoci": 20.0,
+    "VremePrijave": "14:00:00",
+    "VremeOdjave": "22:00:00",
+    "StatusApartmana": 0,
+    "Amenities": [
+      {
+        "Id": 1,
+        "Naziv": "TV"
+      },
+      {
+        "Id": 2,
+        "Naziv": "WiFi"
+      },
+      {
+        "Id": 6,
+        "Naziv": "Kitchen"
+      }
+    ],
+    "Rezervacije": null,
+    "Id": 0,
+    "IdKorisnika": 0,
+    "Obirsan": false
+  },
+  {
+    "Tip": 0,
+    "BrojSoba": 3,
+    "BrojGostiju": 3,
+    "Lokacija": {
+      "GeografskaSirina": 43.0,
+      "GeografskaDuzina": 54.0,
+      "Adresa": {
+        "Ulica": "Mezgraja",
+        "Broj": 21,
+        "NaseljenoMesto": "Novi Sad",
+        "PostanskiBroj": "36000"
+      }
+    },
+    "DatumiIzdavanja": null,
+    "DatumiDostupnost": [
+      "2019-06-30T00:00:00"
+    ],
+    "Domacin": {
+      "ApartmaniZaIzdavanje": null,
+      "KorisnickoIme": "Domacin",
+      "Lozinka": "Domacin",
+      "Ime": "Domacin",
+      "Prezime": "Domacin",
+      "Pol": 0,
+      "Uloga": 1,
+      "Id": 0
+    },
+    "komentari": null,
+    "Slike": [
+      "/Slike/slika2.jpg"
+    ],
+    "CenaPoNoci": 25.0,
+    "VremePrijave": "14:00:00",
+    "VremeOdjave": "22:00:00",
+    "StatusApartmana": 0,
+    "Amenities": [
+      {
+        "Id": 4,
+        "Naziv": "Hot Water"
+      }
+    ],
+    "Rezervacije": null,
+    "Id": 1,
+    "IdKorisnika": 0,
+    "Obirsan": false
+  },
+  {
+    "Tip": 1,
+    "BrojSoba": 1,
+    "BrojGostiju": 1,
+    "Lokacija": {
+      "GeografskaSirina": 65.0,
+      "GeografskaDuzina": 45.0,
+      "Adresa": {
+        "Ulica": "Petrovac",
+        "Broj": 71,
+        "NaseljenoMesto": "Beograd",
+        "PostanskiBroj": "11000"
+      }
+    },
+    "DatumiIzdavanja": null,
+    "DatumiDostupnost": [
+      "2019-06-30T00:00:00"
+    ],
+    "Domacin": {
+      "ApartmaniZaIzdavanje": null,
+      "KorisnickoIme": "Domacin",
+      "Lozinka": "Domacin",
+      "Ime": "Domacin",
+      "Prezime": "Domacin",
+      "Pol": 0,
+      "Uloga": 1,
+      "Id": 0
+    },
+    "komentari": null,
+    "Slike": [
+      "/Slike/slika3.png"
+    ],
+    "CenaPoNoci": 25.0,
+    "VremePrijave": "21:00:00",
+    "VremeOdjave": "23:00:00",
+    "StatusApartmana": 0,
+    "Amenities": [
+      {
+        "Id": 2,
+        "Naziv": "WiFi"
+      }
+    ],
+    "Rezervacije": null,
+    "Id": 2,
+    "IdKorisnika": 0,
+    "Obirsan": false
+  },
+  {
+    "Tip": 0,
+    "BrojSoba": 3,
+    "BrojGostiju": 3,
+    "Lokacija": {
+      "GeografskaSirina": 23.0,
+      "GeografskaDuzina": 43.0,
+      "Adresa": {
+        "Ulica": "Sajma",
+        "Broj": 25,
+        "NaseljenoMesto": "Beograd",
+        "PostanskiBroj": "11000"
+      }
+    },
+    "DatumiIzdavanja": null,
+    "DatumiDostupnost": [
+      "2019-06-30T00:00:00"
+    ],
+    "Domacin": {
+      "ApartmaniZaIzdavanje": null,
+      "KorisnickoIme": "Domacin",
+      "Lozinka": "Domacin",
+      "Ime": "Domacin",
+      "Prezime": "Domacin",
+      "Pol": 0,
+      "Uloga": 1,
+      "Id": 0
+    },
+    "komentari": null,
+    "Slike": [
+      "/Slike/slika4.jpg"
+    ],
+    "CenaPoNoci": 30.0,
+    "VremePrijave": "14:00:00",
+    "VremeOdjave": "22:00:00",
+    "StatusApartmana": 0,
+    "Amenities": [
+      {
+        "Id": 1,
+        "Naziv": "TV"
+      }
+    ],
+    "Rezervacije": null,
+    "Id": 3,
+    "IdKorisnika": 0,
+    "Obirsan": false
+  }
+]

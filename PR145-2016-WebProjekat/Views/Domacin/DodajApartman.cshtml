@@ -1,0 +1,243 @@
+﻿
+@{
+    ViewBag.Title = "DodajApartman";
+}
+
+
+<head>
+    <link href="@Url.Content("~/Content/Domacin.css")" rel="stylesheet" type="text/css" />
+</head>
+
+
+<body>
+
+    <h2>DodajApartman</h2>
+
+    @{
+
+        if (ViewBag.hide != "hide")
+        {
+    <form action="~/Domacin/Dodaj" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>Type:</td>
+                <td>
+                    <select name="Tip">
+                        <option value="CeoApartman">Apartman</option>
+                        <option value="Soba">Room</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Number of room</td>
+                <td><input type="number" name="BrojSoba" required/></td>
+            </tr>
+            <tr>
+                <td>Number of guest</td>
+                <td><input type="number" name="BrojGostiju" required/></td>
+            </tr>
+            <tr>
+                <td>Geographical width:</td>
+                <td><input type="number" name="GeografskaSirina" required/></td>
+            </tr>
+            <tr>
+                <td>Geographical length:</td>
+                <td><input type="number" name="GeografskaDuzina" required/></td>
+            </tr>
+
+            <tr>
+                <td>Streat:</td>
+                <td><input type="text" name="Ulica" required/></td>
+            </tr>
+            <tr>
+                <td>Number:</td>
+                <td><input type="number" name="Broj" required/></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><input type="text" name="NaseljenoMesto" required/></td>
+            </tr>
+            <tr>
+                <td>Poste Code:</td>
+                <td><input type="number" name="PostanskiBroj" required/></td>
+            </tr>
+            <tr>
+                <td>Available Date:</td>
+                <td><input type="date" name="DatumiDostupnost" required /></td>
+            </tr>
+            <tr>
+                <td>Check in Time:</td>
+                <td><input type="time" name="VremePrijave" value="14:00" /></td>
+            </tr>
+            <tr>
+                <td>Check out Time:</td>
+                <td><input type="time" name="VremeOdjave" value="22:00" /></td>
+            </tr>
+            <tr>
+                <td>Price for Night:</td>
+                <td><input type="number" name="CenaPoNoci" required/></td>
+            </tr>
+
+            <tr>
+                <td>Amenities:</td>
+                <td>
+                    @{foreach (var item in ViewBag.basic)
+                        {
+                            <input type="checkbox" name="@item.Naziv" /> @item.Naziv
+                        }}
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @{foreach (var item in ViewBag.family)
+                        {
+                            <input type="checkbox" name="@item.Naziv" /> @item.Naziv
+                        }}
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @{foreach (var item in ViewBag.dining)
+                        {
+                            <input type="checkbox" name="@item.Naziv" /> @item.Naziv
+                        }}
+                </td>
+            </tr>
+
+            <!--<tr>
+                <td>StatusApartmana: </td>
+                <td>
+                    <select name="StatusApartmana">
+                        <option value="Aktivno">Aktivno</option>
+                        <option value="Neaktivno">Neaktivno</option>
+                    </select>
+                </td>
+            </tr> 
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Add Apartman" /></td>
+            </tr> -->
+        </table>
+        @if (ViewBag.picture != null)
+        {
+            foreach (var item in ViewBag.picture)
+            {
+                <img src="@item" width="100" />
+            }
+        }
+
+        <label for="file">Upload Image:</label>
+        <input type="file" name="file" id="file" style="width: 100%;" />
+        <input type="submit" value="Upload" class="submit" />
+    </form>
+    
+        }
+        else
+        {
+            <form action="~/Domacin/Sacuvaj" method="post">
+                <table>
+                    <tr>
+                        <td>Type:</td>
+                        <td>
+                            <select name="Tip">
+                                <option value="CeoApartman">Apartman</option>
+                                <option value="Soba">Room</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Number of room</td>
+                        <td><input type="number" name="BrojSoba" value="@ViewBag.a.BrojSoba" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Number of guest</td>
+                        <td><input type="number" name="BrojGostiju" value="@ViewBag.a.BrojGostiju" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Geographical width:</td>
+                        <td><input type="number" name="GeografskaSirina" value="@ViewBag.a.Lokacija.GeografskaSirina" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Geographical length:</td>
+                        <td><input type="number" name="GeografskaDuzina" value="@ViewBag.a.Lokacija.GeografskaDuzina" required/></td>
+                    </tr>
+
+                    <tr>
+                        <td>Streat:</td>
+                        <td><input type="text" name="Ulica" value="@ViewBag.a.Lokacija.Adresa.Ulica" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Number:</td>
+                        <td><input type="number" name="Broj" value="@ViewBag.a.Lokacija.Adresa.Broj" required/></td>
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        <td><input type="text" name="NaseljenoMesto" value="@ViewBag.a.Lokacija.Adresa.NaseljenoMesto" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Post Code:</td>
+                        <td><input type="number" name="PostanskiBroj" value="@ViewBag.a.Lokacija.Adresa.PostanskiBroj" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Available Date:</td>
+                        <td><input type="date" name="DatumiDostupnost" value="@ViewBag.a.DatumiDostupnost[0].ToString("yyyy-MM-dd")" /></td>
+                    </tr>
+                    <tr>
+                        <td>Check in Time:</td>
+                        <td><input type="time" name="VremePrijave" value="@ViewBag.a.VremePrijave" /></td>
+                    </tr>
+                    <tr>
+                        <td>Check out Time:</td>
+                        <td><input type="time" name="VremeOdjave" value="@ViewBag.a.VremeOdjave" /></td>
+                    </tr>
+                    <tr>
+                        <td>Price for Night:</td>
+                        <td><input type="number" name="CenaPoNoci" value="@ViewBag.a.CenaPoNoci" required/></td>
+                    </tr>
+
+                    <tr>
+                        <td>Amenities:</td>
+                        <td>
+                            @{foreach (var item in ViewBag.basic)
+                                {
+                                    <input type="checkbox" name="@item.Naziv" /> @item.Naziv
+                                }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @{foreach (var item in ViewBag.family)
+                                {
+                                    <input type="checkbox" name="@item.Naziv" /> @item.Naziv
+                                }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @{foreach (var item in ViewBag.dining)
+                                {
+                                    <input type="checkbox" name="@item.Naziv" /> @item.Naziv
+                                }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="hidden" name="idap" value="@ViewBag.a.Id" /></td>
+                        <td><input type="hidden" name="slap" value="@ViewBag.a.Slike[0]" /></td>
+                        <td><input type="submit" value="Change Apartman" /></td>
+
+                    </tr>
+                </table>
+            </form>
+        }
+
+    }
+
+    <form action="~/Domacin/Kraj" method="post">
+        <input type="submit" value="End" />
+    </form>
+</body>

@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Stavke";
+}
+
+<h2>Stavke</h2>
+
+<head>
+    <link href="@Url.Content("~/Content/NeReg.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div>
+        <table style="position:absolute;">
+            <tr>
+                <td>Basic</td>
+            </tr>
+            @foreach (var item in ViewBag.basic)
+            {
+
+                <tr>
+                    <td>@item.Naziv</td>
+                </tr>
+
+            }
+        </table>
+
+
+
+        <table style="margin-left:200px;position:absolute;">
+            <tr>
+                <td>Family</td>
+            </tr>
+            @foreach (var item in ViewBag.family)
+            {
+
+                <tr>
+                    <td>@item.Naziv</td>
+                </tr>
+
+            }
+        </table>
+
+        <table style="margin-left:400px;position:absolute;">
+            <tr>
+                <td>Dining</td>
+            </tr>
+            @foreach (var item in ViewBag.dining)
+            {
+
+                <tr>
+                    <td>@item.Naziv</td>
+                </tr>
+
+            }
+        </table>
+    </div>
+
+
+    <div style="margin-top:200px;">
+        <form action="../StavkeC/Dodaj">
+            <input type="text" name="Naziv" required/>
+            <select name="Tip">
+                <option value="basic">Basic</option>
+                <option value="family">Family</option>
+                <option value="dining">Dining</option>
+            </select>
+            <input type="submit" value="Add" />
+        </form>
+    </div>
+
+
+    <form action="~/Admin/Nazad">
+        <input type="submit" value="Back" />
+    </form>
+</body>

@@ -1,0 +1,23 @@
+﻿body {
+    background-color: cadetblue;
+}
+
+h2 {
+    text-align: center;
+}
+
+#admin{
+    margin-left: 100px;
+    position:absolute;
+}
+
+#korisnici{
+    margin-left: 500px;
+    position: absolute;
+}
+
+#domacini{
+    margin-left: 600px;
+    position: absolute;
+}
+

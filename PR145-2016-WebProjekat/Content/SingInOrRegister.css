@@ -1,0 +1,50 @@
+﻿body {
+    background-color: cadetblue;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.dugme {
+    background: #FAFAD2;
+    opacity: 0.5;
+    color: black;
+    display: inline-block;
+    padding: 20px 45px 20px 45px;
+}
+
+.button {
+    background: #FAFAD2;
+    opacity: 0.5;
+    color: black;
+    display: inline-block;
+    padding: 20px 45px 20px 45px;
+}
+
+#button1 {
+    position: absolute;
+    left: 520px;
+    margin-top: 20px;
+}
+
+#button2 {
+    position: absolute;
+    left: 690px;
+    margin-top: 20px;
+}
+
+.a {
+    background: #FAF0E6;
+}
+
+.input {
+    margin-top: 130px;
+    margin-left: 445px;
+}
+
+#link {
+    text-decoration: none;
+    color: midnightblue;
+}
